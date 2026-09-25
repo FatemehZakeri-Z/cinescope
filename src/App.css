@@ -1,0 +1,110 @@
+body{
+  background: #440079;
+   margin:0;
+}
+.app{
+    background: linear-gradient(45deg, black, transparent);
+    min-height: 100vh;
+}
+.movie-card {
+  background: rgb(0 0 0 / 34%);
+  color: aliceblue;
+  border-radius: 20px;
+  width: 240px;
+  padding-bottom: 1%;
+  margin-bottom: 2%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+.movie-card h3,
+.movie-info {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.movie-card h3 {
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+.movie-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+      margin: 2% 0 2% 0;
+}
+.appName{
+  color: rgb(194, 226, 255);
+  padding: 2%;
+}
+.text_h1 {
+  color: #aa3bff;
+  font-size: clamp(32px, 5vw, 64px);
+  text-align: center;
+  margin: 0 0 20px;
+}
+.search {
+  width: min(500px, 80%);
+  padding: 14px 20px;
+  border: 1px solid #58009c;
+  border-radius: 30px;
+  background: rgb(28 30 42 / 70%);
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(12px);
+box-shadow: 0 8px 30px rgb(0 0 0 / 25%);
+}
+.search:focus {
+  border-color: #aa3bff;
+  box-shadow: 0 0 15px rgb(170 59 255 / 35%);
+}
+.hero{
+  min-height: 75vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:40px 20px;
+
+  background:
+    radial-gradient(circle at top, rgb(170 59 255 / 18%), transparent 45%),
+    linear-gradient(180deg, transparent, rgb(0 0 0 / 20%));
+}
+.hero-subtitle{
+  color:#c8b7ff;
+  max-width:560px;
+  line-height:1.6;
+  margin-bottom:30px;
+  font-size:18px;
+}
+.movie-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .cards {
+    gap: 15px;
+    padding: 0 15px;
+  }
+
+  .movie-card {
+    width: 170px;
+  }
+}
