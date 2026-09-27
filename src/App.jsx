@@ -1,34 +1,65 @@
 import './App.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
 // اسم کامپوننت با حروف بزرگ باید شروع شود
-
-let appName="CineScope";
-const movies =[ 
-  {
-  id:1,
-  title: "Interstellar",
-  year: 2014,
-  rating: 8.65,
-  poster:'/interstellar.jpg'
-},
-{
-  id:2,
-  title: "Inception",
-  year: 2010,
-  rating: 8.83,
-  poster:'/inception.jpg'
-},
-{
-  id:3,
-  title: "The Batman",
-  year: 2022,
-  rating: 7.84,
-  poster:'/batman.jpg'
-}
-];
+const appName="CineScope";
+const [movies, setMovies] = useState([]);
 const [search, setSearch] = useState("");
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState("");
+// useState داده را نگه می‌دارد
+// useEffect کارهایی را انجام می‌دهد که باید بعد از Render اتفاق بیفتند؛ مثل گرفتن اطلاعات از اینترنت
+const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+useEffect(() => {
+
+  const timer = setTimeout(() => {
+  fetchMovies();
+}, 600);
+  async function fetchMovies() {
+    try {
+       setLoading(true);
+       setError("");
+       const url = search.trim()
+  ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(search)}`
+  : `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`;
+
+      const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
+
+      const data = await response.json();
+
+      // console.log(data);
+
+      setMovies(
+        data.results.map((movie) => ({
+          id: movie.id,
+          title: movie.title,
+          year: movie.release_date
+            ? movie.release_date.split("-")[0]
+            : "----",
+          rating: movie.vote_average,
+          poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+        }))
+      );
+    } catch (error) {
+
+         setError("Couldn't load movies.");
+
+      } finally {
+
+       setLoading(false);
+
+      }
+      //  فاینلی همیشه اجرا میشه
+  }
+  return () => clearTimeout(timer);
+
+  fetchMovies();
+}, [search]);
 
 const filteredMovies=movies.filter(movie =>
    movie.title.toLowerCase().includes(search.toLowerCase())
@@ -47,8 +78,18 @@ const filteredMovies=movies.filter(movie =>
 
       </section>
       <div className='cards'>
-        {filteredMovies.length > 0 ? filteredMovies.map(movie=><MovieCard key={movie.id} movie={movie} />) : <p>No movies found</p>}
-         </div>
+        {loading ? (
+        <p className="status">Loading movies...</p>
+        ) : error ? (
+        <p className="status">{error}</p>
+        ) : filteredMovies.length > 0 ? (
+        filteredMovies.map(movie => (
+       <MovieCard key={movie.id} movie={movie}/>
+       ))
+       ) : (
+       <p className="status">No movies found.</p>
+       )}
+     </div>
     </div>
 
     </>
