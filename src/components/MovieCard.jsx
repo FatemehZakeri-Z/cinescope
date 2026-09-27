@@ -1,3 +1,4 @@
+// D:\js\movie_explore\cinescope\src\components\MovieCard.jsx
 function MovieCard({ movie }) {
   return (
     <div className="movie-card">

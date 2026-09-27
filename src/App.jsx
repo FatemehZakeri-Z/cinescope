@@ -1,3 +1,4 @@
+// D:\js\movie_explore\cinescope\src\App.jsx
 import './App.css'
 import MovieCard from "./components/MovieCard";
 import { useState, useEffect } from "react";
@@ -53,7 +54,9 @@ useEffect(() => {
   return (
     <>
     <div className='app'>
-      {/* <h1 className='appName'>{appName}</h1> */}
+      <header className="navbar">
+        <h1 className="appName">{appName}</h1>
+      </header>
       <section className='hero'>
         <h1 className='text_h1'>Discover your next favorite movie!</h1>
         <p className="hero-subtitle">Search thousands of movies and discover your next favorite.</p>

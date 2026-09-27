@@ -55,10 +55,6 @@ body{
   justify-content:center;
       margin: 2% 0 2% 0;
 }
-.appName{
-  color: rgb(194, 226, 255);
-  padding: 2%;
-}
 .text_h1 {
   color: #aa3bff;
   font-size: clamp(32px, 5vw, 64px);
@@ -168,4 +164,18 @@ box-shadow: 0 8px 30px rgb(0 0 0 / 25%);
   );
 
   pointer-events: none;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.appName {
+  color: white;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
