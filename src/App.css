@@ -7,7 +7,7 @@ body{
     min-height: 100vh;
 }
 .movie-card {
-  background: rgb(0 0 0 / 34%);
+  background: rgb(0 0 0 / 4%);
   color: aliceblue;
   border-radius: 20px;
   width: 240px;
@@ -24,10 +24,21 @@ body{
   margin-left: 15px;
   margin-right: 15px;
 }
-.movie-card h3 {
-  margin-top: 12px;
-  margin-bottom: 8px;
-  font-size: 18px;
+.movie-card h3{
+  margin-top:12px;
+  margin-bottom:8px;
+
+  font-size:18px;
+  line-height:1.3;
+
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  /* یعنی بیشتر از 2 خط نقطه بزار */
+  -webkit-box-orient:vertical;
+
+  overflow:hidden;
+
+  min-height:47px;
 }
 .movie-info {
   display: flex;
@@ -114,4 +125,47 @@ box-shadow: 0 8px 30px rgb(0 0 0 / 25%);
   .movie-card {
     width: 170px;
   }
+}
+.movie-poster{
+  position: relative;
+  overflow: hidden;
+}
+.movie-poster img{
+  transition: transform 0.4s ease;
+}
+
+.movie-card:hover .movie-poster img{
+  /* وقتی موس روی movie-card رفت، عکس داخل movie-poster را تغییر بده. */
+  transform: scale(1.08);
+}
+.rating-badge{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+      background: rgb(170 59 255 / 39%);
+  backdrop-filter: blur(8px);
+
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  z-index: 2;
+}
+
+.poster-overlay{
+  position: absolute;
+  inset: 0;
+  /* به جای اینکه بنویسم تاپ و دان و رایت و لفت 0، میشه اینست 0 */
+
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / 70%),
+    transparent 45%
+  );
+
+  pointer-events: none;
 }
