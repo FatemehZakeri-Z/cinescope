@@ -19,10 +19,23 @@ Movie data is provided by the TMDB API.
 * Responsive design for desktop and mobile devices
 
 ## Screenshots
-* HOME.PNG
-* HOME_MOVIES.PNG
-* Movie_Details.PNG
-* Favorites.PNG
+
+### Home
+
+![CineScope Home](screenshots/HOME.PNG)
+
+### Home - Movies
+
+![CineScope Movies](screenshots/HOME_MOVIES.PNG)
+
+### Movie Details
+
+![CineScope Movie Details](screenshots/Movie_Details.PNG)
+
+### Favorites
+
+![CineScope Favorites](screenshots/Favorites.PNG)
+
 
 ## Technologies
 
