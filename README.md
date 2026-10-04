@@ -19,10 +19,10 @@ Movie data is provided by the TMDB API.
 * Responsive design for desktop and mobile devices
 
 ## Screenshots
-*HOME.PNG
-*HOME_MOVIES.PNG
-*Movie_Details.PNG
-*Favorites.PNG
+* HOME.PNG
+* HOME_MOVIES.PNG
+* Movie_Details.PNG
+* Favorites.PNG
 
 ## Technologies
 
